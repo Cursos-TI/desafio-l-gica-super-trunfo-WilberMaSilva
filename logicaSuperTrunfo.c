@@ -10,7 +10,7 @@ int main() {
     float pib1 = 67.02;
     int pontosTuristicos1 = 50;
     float densidade1 = populacao1 / area1;
-    float pibPerCapita1 = pib1 * 1000000000 / populacao1;
+    float pibPerCapita1 = (pib1 * 1000000000) / populacao1;
 
     // Declaração e inicialização das variáveis para a segunda carta
     char estado2 = 'C';
@@ -21,32 +21,44 @@ int main() {
     float pib2 = 6.57;
     int pontosTuristicos2 = 15;
     float densidade2 = populacao2 / area2;
-    float pibPerCapita2 = pib2 * 1000000000 / populacao2;
+    float pibPerCapita2 = (pib2 * 1000000000) / populacao2;
 
-    int opcao1, opcao2;
+    // Exibição dos dados da primeira carta
+    printf("\nCarta 1:\n");
+    printf("Estado: %c\n", estado1);
+    printf("Código: %s\n", codigo1);
+    printf("Nome da Cidade: %s\n", nomeCidade1);
+    printf("População: %lu\n", populacao1);
+    printf("Área: %.2f km²\n", area1);
+    printf("PIB: %.2f bilhões de reais\n", pib1);
+    printf("Número de Pontos Turísticos: %d\n", pontosTuristicos1);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita1);
+
+    // Exibição dos dados da segunda carta
+    printf("\nCarta 2:\n");
+    printf("Estado: %c\n", estado2);
+    printf("Código: %s\n", codigo2);
+    printf("Nome da Cidade: %s\n", nomeCidade2);
+    printf("População: %lu\n", populacao2);
+    printf("Área: %.2f km²\n", area2);
+    printf("PIB: %.2f bilhões de reais\n", pib2);
+    printf("Número de Pontos Turísticos: %d\n", pontosTuristicos2);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita2);
+
+    // Comparação baseada no atributo escolhido (exemplo: População)
+    printf("\nComparação de cartas (Atributo: População):\n");
+    printf("Carta 1 - %s: %lu\n", nomeCidade1, populacao1);
+    printf("Carta 2 - %s: %lu\n", nomeCidade2, populacao2);
     
-    // Menu para escolha dos atributos
-    printf("Escolha dois atributos para comparar:\n");
-    printf("1 - População\n2 - Área\n3 - PIB\n4 - Número de Pontos Turísticos\n5 - Densidade Populacional\n6 - PIB per Capita\n");
-    printf("Digite o número do primeiro atributo: ");
-    scanf("%d", &opcao1);
-    printf("Digite o número do segundo atributo: ");
-    scanf("%d", &opcao2);
-
-    // Função para comparar e determinar o vencedor
-    void compararAtributo(int opcao, char nome1[], char nome2[], float valor1, float valor2) {
-        printf("\nComparação de cartas:\n");
-        printf("%s: %.2f\n", nome1, valor1);
-        printf("%s: %.2f\n", nome2, valor2);
-        printf("Resultado: %s venceu!\n", (opcao == 5) ? (valor1 < valor2 ? nome1 : nome2) : (valor1 > valor2 ? nome1 : nome2));
+    if (populacao1 > populacao2) {
+        printf("Resultado: Carta 1 (%s) venceu!\n", nomeCidade1);
+    } else if (populacao2 > populacao1) {
+        printf("Resultado: Carta 2 (%s) venceu!\n", nomeCidade2);
+    } else {
+        printf("Resultado: Empate!\n");
     }
-    
-    // Executar comparação para os dois atributos escolhidos
-    float valores1[] = {populacao1, area1, pib1, pontosTuristicos1, densidade1, pibPerCapita1};
-    float valores2[] = {populacao2, area2, pib2, pontosTuristicos2, densidade2, pibPerCapita2};
-    
-    compararAtributo(opcao1, nomeCidade1, nomeCidade2, valores1[opcao1 - 1], valores2[opcao1 - 1]);
-    compararAtributo(opcao2, nomeCidade1, nomeCidade2, valores1[opcao2 - 1], valores2[opcao2 - 1]);
     
     return 0;
 }
